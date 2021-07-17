@@ -14,6 +14,16 @@ SequenceOfPlayers class >> with: players [
 ]
 
 { #category : #actions }
+SequenceOfPlayers >> assertIfItsPlaying: aPlayerName [
+	^ orderOfPlayers includes: aPlayerName. 
+]
+
+{ #category : #queries }
+SequenceOfPlayers >> currentPlayer [
+	^ orderOfPlayers first.
+]
+
+{ #category : #actions }
 SequenceOfPlayers >> finishTurn [
 	| currentPlayer |
 	currentPlayer := orderOfPlayers removeFirst.
@@ -23,17 +33,4 @@ SequenceOfPlayers >> finishTurn [
 { #category : #initialize }
 SequenceOfPlayers >> initializeWith: players [
 	orderOfPlayers := players asOrderedCollection.
-]
-
-{ #category : #queries }
-SequenceOfPlayers >> whosNext [
-	| currentPlayer |
-	currentPlayer := orderOfPlayers removeFirst.
-	orderOfPlayers addLast: currentPlayer.
-	^ currentPlayer.
-]
-
-{ #category : #queries }
-SequenceOfPlayers >> whosTurnIsIt [
-	^ orderOfPlayers first.
 ]

@@ -1,5 +1,5 @@
 Class {
-	#name : #RandomDie,
+	#name : #HalfLoadedDie,
 	#superclass : #Object,
 	#instVars : [
 		'faces'
@@ -8,18 +8,17 @@ Class {
 }
 
 { #category : #'instance creation' }
-RandomDie class >> with: aNumberOfFaces [
+HalfLoadedDie class >> with: aNumberOfFaces [
 	(aNumberOfFaces >= 3 ) ifFalse: [ self error: 'invalid number of faces' ].
 	^ self new initializeWith: aNumberOfFaces.
 ]
 
 { #category : #initialize }
-RandomDie >> initializeWith: aNumberOfFaces [
+HalfLoadedDie >> initializeWith: aNumberOfFaces [
 	faces := aNumberOfFaces.
-	
 ]
 
 { #category : #actions }
-RandomDie >> roll [
-	^ faces atRandom.
+HalfLoadedDie >> roll [
+	^ faces // 2.
 ]
